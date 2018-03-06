@@ -58,10 +58,47 @@ void DataSource::update(QAbstractSeries *series)
         m_index++;
         if (m_index > m_data.count() - 1)
             m_index = 0;
+        qDebug() << xySeries->count();
 
         QVector<QPointF> points = m_data.at(m_index);
         // Use replace instead of clear + append, it's optimized for performance
         xySeries->replace(points);
+    }
+}
+
+void DataSource::update2(QAbstractSeries *series)
+{
+//    QVector<QPointF> points;
+//    qreal x(0);
+//    qreal y(0);
+
+//    points.append(QPointF(x, y));
+//    m_data.append(points);
+
+    if (series) {
+        QXYSeries *xySeries = static_cast<QXYSeries *>(series);
+//        m_index++;
+//        if (m_index > m_data.count() - 1)
+//            m_index = 0;
+
+
+        //m_points = m_data.at(1);
+        xySeries->replace(m_points);
+        if(m_points.count() >= 1024){
+            qDebug() << m_points.count();
+            m_points.removeAt(0);
+//            for(int i = 0; i < 1023; i++){
+//                m_points.at(i).xp--;
+//            }
+            m_points.append(QPointF(m_index_tt % 1024, (qreal) rand() / (qreal) RAND_MAX));
+            m_index_tt++;
+        }
+        // Use replace instead of clear + append, it's optimized for performance
+//        int count = xySeries->count();
+//        if(xySeries->count() > 1024)
+//            xySeries->removePoints(count%1024, 1);
+//        xySeries->append(count%1024, (qreal) rand() / (qreal) RAND_MAX);
+
     }
 }
 
@@ -73,6 +110,9 @@ void DataSource::generateData(int type, int rowCount, int colCount)
     m_data.clear();
 
     // Append the new data depending on the type
+
+    qDebug() << rowCount;
+
     for (int i(0); i < rowCount; i++) {
         QVector<QPointF> points;
         points.reserve(colCount);
@@ -98,4 +138,6 @@ void DataSource::generateData(int type, int rowCount, int colCount)
         }
         m_data.append(points);
     }
+
+    m_points = m_data.at(1);
 }

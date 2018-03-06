@@ -50,6 +50,7 @@ Item {
             else
                 dataSource.generateData(1, signalCount, sampleCount);
             scopeView.axisX().max = sampleCount;
+            console.log("signalCount:" + signalCount);
         }
         onSeriesTypeChanged: scopeView.changeSeriesType(type);
         onRefreshRateChanged: scopeView.changeRefreshRate(rate);

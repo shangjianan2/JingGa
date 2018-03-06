@@ -50,10 +50,13 @@ Q_SIGNALS:
 public slots:
     void generateData(int type, int rowCount, int colCount);
     void update(QAbstractSeries *series);
+    void update2(QAbstractSeries *series);
 
 private:
     QQuickView *m_appViewer;
     QList<QVector<QPointF> > m_data;
+    QVector<QPointF> m_points;
+    int m_index_tt;
     int m_index;
 };
 

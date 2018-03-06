@@ -91,8 +91,8 @@ ChartView {
         running: true
         repeat: true
         onTriggered: {
-            dataSource.update(chartView.series(0));
-            dataSource.update(chartView.series(1));
+            dataSource.update2(chartView.series(0));
+            dataSource.update2(chartView.series(1));
         }
     }
     //![2]
