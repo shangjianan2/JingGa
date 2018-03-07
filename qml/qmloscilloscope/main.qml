@@ -32,11 +32,12 @@ import QtQuick 2.0
 //![1]
 Item {
     id: main
-    width: 600
+    width: 642
     height: 400
 
     ControlPanel {
         id: controlPanel
+        width: 326
         anchors.top: parent.top
         anchors.topMargin: 10
         anchors.bottom: parent.bottom

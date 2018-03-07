@@ -11,7 +11,8 @@ RESOURCES += \
     resources.qrc
 
 DISTFILES += \
-    qml/qmloscilloscope/*
+    qml/qmloscilloscope/* \
+    timg.jpg
 
 target.path = $$[QT_INSTALL_EXAMPLES]/charts/qmloscilloscope
 INSTALLS += target

@@ -42,22 +42,85 @@ ColumnLayout {
     signal antialiasingEnabled(bool enabled)
     signal openGlChanged(bool enabled)
 
-    Text {
-        text: "Scope"
-        font.pointSize: 18
-        color: "white"
+//    Text {
+//        text: "Scope"
+//        font.pointSize: 18
+//        color: "white"
+//    }
+
+
+    Image {
+        id: img
+        source: "qrc:/timg.jpg"  // 要显示的图片
+
+//        RotationAnimation on rotation { // 旋转动画
+//                  loops: Animation.Infinite // 一直旋转
+//                  from: 0       // 从 0 - 360 度旋转
+//                  to: 360
+//                  duration: 3000        // 旋转一个周期需要三秒
+//              }
+
+        Rectangle{
+            id: rectangle
+            color: 'red'
+            width: 10; height: 10
+            x: img.width / 2; y: img.height / 2
+        }
+
+        MouseArea {     // 鼠标响应
+            id: dragArea;
+            anchors.fill: parent;   // 在父容器内才响应
+            drag.target: img        // id为img的对象可以被拖动
+            onClicked: {            // 点击事件
+                console.debug("点击了图片")  // 打印信息
+                if(0 == n){         // 根据变量切换图片
+                 img.source="qrc:/ani.jpg";
+                    n = 1
+                }else{
+                 img.source="qrc:/av1.jpg";
+                    n=0;
+                }
+            }
+
+            onWheel: {
+                if (wheel.angleDelta.y > 0) {
+                    img.width += 20;
+                    img.x -= 8
+
+                    img.height += 20;
+                    img.y -= 8
+                }
+                else {
+                    img.width -= 20;
+                    img.x += 8
+
+                    img.height -= 20;
+                    img.y += 8
+                }
+            }
+
+        }
     }
 
     MultiButton {
         id: openGLButton
+        x: -2
+        y: 11
+        width: 21
+        height: 21
         text: "OpenGL: "
+        visible: false
         items: ["false", "true"]
         currentSelection: 1
         onSelectionChanged: openGlChanged(currentSelection == 1);
     }
 
     MultiButton {
+        y: 83
+        width: 20
+        height: 20
         text: "Graph: "
+        visible: false
         items: ["line", "scatter"]
         currentSelection: 0
         onSelectionChanged: seriesTypeChanged(items[currentSelection]);
@@ -66,6 +129,7 @@ ColumnLayout {
     MultiButton {
         id: signalSourceButton
         text: "Source: "
+        visible: false
         items: ["sin", "linear"]
         currentSelection: 0
         onSelectionChanged: signalSourceChanged(
@@ -77,6 +141,7 @@ ColumnLayout {
     MultiButton {
         id: sampleCountButton
         text: "Samples: "
+        visible: false
         items: ["6", "128", "1024", "10000"]
         currentSelection: 2
         onSelectionChanged: signalSourceChanged(
@@ -87,6 +152,7 @@ ColumnLayout {
 
     MultiButton {
         text: "Refresh rate: "
+        visible: false
         items: ["1", "24", "60"]
         currentSelection: 2
         onSelectionChanged: refreshRateChanged(items[currentSelection]);
@@ -95,6 +161,7 @@ ColumnLayout {
     MultiButton {
         id: antialiasButton
         text: "Antialias: "
+        visible: false
         items: ["OFF", "ON"]
         enabled: true
         currentSelection: 0
