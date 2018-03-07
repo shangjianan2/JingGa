@@ -32,17 +32,25 @@ void UdpReceiver::receive()
 //            green_red = false;
 //        }
         char *p_char = ba.data();
-        qDebug() << (int)(*p_char);
-        if((int)(*p_char) > 2){
-            green_red = true;
+        //qDebug() << (int)(*p_char);
+        if(p_char[0] == 0){
+            if(p_char[1] > 2){
+                green_red = 0;
+            }else{
+                green_red = 1;
+            }
         }else{
-            green_red = false;
+            if(p_char[1] > 2){
+                green_red = 2;
+            }else{
+                green_red = 3;
+            }
         }
         emit senddate(p_char);
     }
 }
 
-bool UdpReceiver::return_gr()
+int UdpReceiver::return_gr()
 {
     return green_red;
 }

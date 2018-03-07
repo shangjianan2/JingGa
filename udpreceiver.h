@@ -14,14 +14,14 @@ public:
 
 public slots:
     void receive();
-    bool return_gr();
+    int return_gr();
 
 private:
     QUdpSocket *uSocket;
 
     //from lunge
 public:
-    bool green_red;
+    int green_red;
 
 signals:
     void senddate(char *data);

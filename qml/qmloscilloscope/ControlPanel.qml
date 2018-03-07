@@ -53,10 +53,19 @@ ColumnLayout {
         running: true
         repeat: true
         onTriggered: {
-            if(ur.return_gr() === true){
+            switch(ur.return_gr()){
+            case 0:
                 rectangle.color = 'green';
-            }else{
+                break;
+            case 1:
                 rectangle.color = 'red';
+                break;
+            case 2:
+                rectangle2.color = 'green';
+                break;
+            case 3:
+                rectangle2.color = 'red';
+                break;
             }
         }
     }
@@ -78,6 +87,13 @@ ColumnLayout {
             color: 'red'
             width: 10; height: 10
             x: img.width / 2; y: img.height / 2
+        }
+
+        Rectangle{
+            id: rectangle2
+            color: 'red'
+            width: 10; height: 10
+            x: img.width / 3; y: img.height / 3
         }
 
         MouseArea {     // 鼠标响应
