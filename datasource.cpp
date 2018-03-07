@@ -84,21 +84,27 @@ void DataSource::update2(QAbstractSeries *series)
 
         //m_points = m_data.at(1);
         xySeries->replace(m_points);
-        if(m_points.count() >= 1024){
-            qDebug() << m_points.count();
-            m_points.removeAt(0);
-            for(int i = 0; i < 1023; i++){
-                m_points.at(i).xp--;
-            }
-            m_points.append(QPointF(m_index_tt % 1024, (qreal) rand() / (qreal) RAND_MAX));
-            m_index_tt++;
-        }
-        // Use replace instead of clear + append, it's optimized for performance
-//        int count = xySeries->count();
-//        if(xySeries->count() > 1024)
-//            xySeries->removePoints(count%1024, 1);
-//        xySeries->append(count%1024, (qreal) rand() / (qreal) RAND_MAX);
+//        if(m_points.count() >= 1024){
+//            qDebug() << m_points.count();
+//            m_points.removeAt(0);
+//           // for(int i = 0; i < 1023; i++){
+//           //     m_points.at(i).xp--;
+//           // }
+//            m_points.append(QPointF(m_index_tt % 1024, (qreal) rand() / (qreal) RAND_MAX));
+//            m_index_tt++;
+//            if(m_index_tt%2 == 0){
+//                for(int i = 1; i < 1024; i++){
+//                    m_points2.append(m_points.at(i));
+//                }
+//            }
+//        }
+//		m_points[2].setX(1);
+//		m_points[2].setY(1);
 
+		for(int i = 0; i < 1023; i++){
+			m_points[i].setY(m_points[i + 1].ry())	;
+		}
+		m_points[1023].setY((qreal) rand() / (qreal) RAND_MAX);
     }
 }
 

@@ -32,6 +32,7 @@
 
 #include <QtCore/QObject>
 #include <QtCharts/QAbstractSeries>
+#include <QPointF>
 
 QT_BEGIN_NAMESPACE
 class QQuickView;
@@ -56,6 +57,8 @@ private:
     QQuickView *m_appViewer;
     QList<QVector<QPointF> > m_data;
     QVector<QPointF> m_points;
+    QVector<QPointF> m_points2;
+    QVector<QPointF> *p_m_points;
     int m_index_tt;
     int m_index;
 };
