@@ -62,6 +62,9 @@ int main(int argc, char *argv[])
     viewer.setTitle(QStringLiteral("QML Oscilloscope"));
 
     DataSource dataSource(&viewer);
+
+    QObject::connect(&ur, SIGNAL(senddate(char*)), &dataSource, SLOT(anylisy(char*)));
+
     viewer.rootContext()->setContextProperty("dataSource", &dataSource);
     viewer.rootContext()->setContextProperty("ur", &ur);
 

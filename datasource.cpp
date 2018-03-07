@@ -75,8 +75,13 @@ void DataSource::update2(QAbstractSeries *series)
 		for(int i = 0; i < 1023; i++){
 			m_points[i].setY(m_points[i + 1].ry())	;
 		}
-		m_points[1023].setY((qreal) rand() / (qreal) RAND_MAX);
+        //m_points[1023].setY((qreal) rand() / (qreal) RAND_MAX);
+        m_points[1023].setY(receiver_data);
     }
+}
+void DataSource::anylisy(char *p_char)
+{
+    receiver_data = (int)(*p_char);
 }
 
 void DataSource::generateData(int type, int rowCount, int colCount)

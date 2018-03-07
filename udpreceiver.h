@@ -22,8 +22,9 @@ private:
     //from lunge
 public:
     bool green_red;
-    //bool return_gr();
-    //void update_deng()
+
+signals:
+    void senddate(char *data);
 };
 
 #endif // UDPRECEIVER_H

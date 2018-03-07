@@ -26,12 +26,19 @@ void UdpReceiver::receive()
     {
         ba.resize(uSocket->pendingDatagramSize());
         uSocket->readDatagram(ba.data(), ba.size());
-        //char *data = ba.data();
-        if(strcmp(ba.data(), "Hello world!") == 0){
+//        if(strcmp(ba.data(), "Hello world!") == 0){
+//            green_red = true;
+//        }else{
+//            green_red = false;
+//        }
+        char *p_char = ba.data();
+        qDebug() << (int)(*p_char);
+        if((int)(*p_char) > 2){
             green_red = true;
         }else{
             green_red = false;
         }
+        emit senddate(p_char);
     }
 }
 

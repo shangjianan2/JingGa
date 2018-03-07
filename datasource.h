@@ -61,6 +61,11 @@ private:
     QVector<QPointF> *p_m_points;
     int m_index_tt;
     int m_index;
+
+    //lunge
+    int receiver_data;
+public slots:
+    void anylisy(char *p_char);
 };
 
 #endif // DATASOURCE_H
