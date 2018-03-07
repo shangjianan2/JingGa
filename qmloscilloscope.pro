@@ -1,11 +1,13 @@
 QT += charts qml quick
 
 HEADERS += \
-    datasource.h
+    datasource.h \
+    udpreceiver.h
 
 SOURCES += \
     main.cpp \
-    datasource.cpp
+    datasource.cpp \
+    udpreceiver.cpp
 
 RESOURCES += \
     resources.qrc

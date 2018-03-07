@@ -34,8 +34,16 @@
 #include <QtCore/QDir>
 #include "datasource.h"
 
+#include "udpreceiver.h"
+#include <iostream>
+
 int main(int argc, char *argv[])
 {
+    UdpReceiver ur;
+    std::cout << "--- Recevier ---" << std::endl;
+
+
+
     // Qt Charts uses Qt Graphics View Framework for drawing, therefore QApplication must be used.
     QApplication app(argc, argv);
 
