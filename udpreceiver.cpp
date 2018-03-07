@@ -8,7 +8,8 @@ UdpReceiver::UdpReceiver(QObject *p) :
     QObject(p)
 {
     uSocket = new QUdpSocket;
-    uSocket->bind(QHostAddress("127.0.0.1"), PORT);
+    //uSocket->bind(QHostAddress("127.0.0.1"), PORT);
+    uSocket->bind(QHostAddress("192.168.170.130"), PORT);
     connect(uSocket, SIGNAL(readyRead()), this, SLOT(receive()));
 }
 
@@ -20,6 +21,7 @@ UdpReceiver::~UdpReceiver()
 void UdpReceiver::receive()
 {
     QByteArray ba;
+    qDebug() << "receive OK";
     while(uSocket->hasPendingDatagrams())
     {
         ba.resize(uSocket->pendingDatagramSize());
