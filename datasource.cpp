@@ -87,9 +87,9 @@ void DataSource::update2(QAbstractSeries *series)
         if(m_points.count() >= 1024){
             qDebug() << m_points.count();
             m_points.removeAt(0);
-//            for(int i = 0; i < 1023; i++){
-//                m_points.at(i).xp--;
-//            }
+            for(int i = 0; i < 1023; i++){
+                m_points.at(i).xp--;
+            }
             m_points.append(QPointF(m_index_tt % 1024, (qreal) rand() / (qreal) RAND_MAX));
             m_index_tt++;
         }
