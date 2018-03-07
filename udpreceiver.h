@@ -14,9 +14,16 @@ public:
 
 public slots:
     void receive();
+    bool return_gr();
 
 private:
     QUdpSocket *uSocket;
+
+    //from lunge
+public:
+    bool green_red;
+    //bool return_gr();
+    //void update_deng()
 };
 
 #endif // UDPRECEIVER_H

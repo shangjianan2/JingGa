@@ -47,6 +47,19 @@ ColumnLayout {
 //        font.pointSize: 18
 //        color: "white"
 //    }
+    Timer {
+        id: refreshTimer
+        interval: 100 // 60 Hz
+        running: true
+        repeat: true
+        onTriggered: {
+            if(ur.return_gr() === true){
+                rectangle.color = 'green';
+            }else{
+                rectangle.color = 'red';
+            }
+        }
+    }
 
 
     Image {

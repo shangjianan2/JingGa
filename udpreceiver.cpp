@@ -24,6 +24,16 @@ void UdpReceiver::receive()
     {
         ba.resize(uSocket->pendingDatagramSize());
         uSocket->readDatagram(ba.data(), ba.size());
-        std::cout << ba.data() << std::endl;
+        //char *data = ba.data();
+        if(strcmp(ba.data(), "Hello world!") == 0){
+            green_red = true;
+        }else{
+            green_red = false;
+        }
     }
+}
+
+bool UdpReceiver::return_gr()
+{
+    return green_red;
 }
