@@ -52,15 +52,15 @@ ChartView {
 
     ValueAxis {
         id: axisY1
-        min: -1
-        max: 3
+        min: -2
+        max: 6
 		color: 'green'
     }
 
     ValueAxis {
         id: axisY2
-        min: -2
-        max: 2
+        min: -4
+        max: 4
 		color: 'blue'
     }
 

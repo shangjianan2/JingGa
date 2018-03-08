@@ -47,82 +47,82 @@ ColumnLayout {
 //        font.pointSize: 18
 //        color: "white"
 //    }
-    Timer {
-        id: refreshTimer
-        interval: 100 // 60 Hz
-        running: true
-        repeat: true
-        onTriggered: {
-            switch(ur.return_gr()){
-            case 0:
-                rectangle.color = 'green';
-                break;
-            case 1:
-                rectangle.color = 'red';
-                break;
-            case 2:
-                rectangle2.color = 'green';
-                break;
-            case 3:
-                rectangle2.color = 'red';
-                break;
-            }
-        }
-    }
+//    Timer {
+//        id: refreshTimer
+//        interval: 100 // 60 Hz
+//        running: true
+//        repeat: true
+//        onTriggered: {
+//            switch(ur.return_gr()){
+//            case 0:
+//                rectangle.color = 'green';
+//                break;
+//            case 1:
+//                rectangle.color = 'red';
+//                break;
+//            case 2:
+//                rectangle2.color = 'green';
+//                break;
+//            case 3:
+//                rectangle2.color = 'red';
+//                break;
+//            }
+//        }
+//    }
 
 
-    Image {
-        id: img
-        source: "qrc:/timg.jpg"  // 要显示的图片
-
-        Rectangle{
-            id: rectangle
-            color: 'red'
-            width: 10; height: 10
-            x: img.width / 2; y: img.height / 2
-        }
-
-        Rectangle{
-            id: rectangle2
-            color: 'red'
-            width: 10; height: 10
-            x: img.width / 3; y: img.height / 3
-        }
-
-        MouseArea {     // 鼠标响应
-            id: dragArea;
-            anchors.fill: parent;   // 在父容器内才响应
-            drag.target: img        // id为img的对象可以被拖动
-            onClicked: {            // 点击事件
-                console.debug("点击了图片")  // 打印信息
-                if(0 == n){         // 根据变量切换图片
-                 img.source="qrc:/ani.jpg";
-                    n = 1
-                }else{
-                 img.source="qrc:/av1.jpg";
-                    n=0;
-                }
-            }
-
-            onWheel: {
-                if (wheel.angleDelta.y > 0) {
-                    img.width += 20;
-                    img.x -= 8
-
-                    img.height += 20;
-                    img.y -= 8
-                }
-                else {
-                    img.width -= 20;
-                    img.x += 8
-
-                    img.height -= 20;
-                    img.y += 8
-                }
-            }
-
-        }
-    }
+//    Image {
+//        id: img
+//        source: "qrc:/timg.jpg"  // 要显示的图片
+//
+//        Rectangle{
+//            id: rectangle
+//            color: 'red'
+//            width: 10; height: 10
+//            x: img.width / 2; y: img.height / 2
+//        }
+//
+//        Rectangle{
+//            id: rectangle2
+//            color: 'red'
+//            width: 10; height: 10
+//            x: img.width / 3; y: img.height / 3
+//        }
+//
+//        MouseArea {     // 鼠标响应
+//            id: dragArea;
+//            anchors.fill: parent;   // 在父容器内才响应
+//            drag.target: img        // id为img的对象可以被拖动
+//            onClicked: {            // 点击事件
+//                console.debug("点击了图片")  // 打印信息
+////                if(0 == n){         // 根据变量切换图片
+////                 img.source="qrc:/ani.jpg";
+////                    n = 1
+////                }else{
+////                 img.source="qrc:/av1.jpg";
+////                    n=0;
+////                }
+//            }
+//
+//            onWheel: {
+//                if (wheel.angleDelta.y > 0) {
+//                    img.width += 20;
+//                    img.x -= 8
+//
+//                    img.height += 20;
+//                    img.y -= 8
+//                }
+//                else {
+//                    img.width -= 20;
+//                    img.x += 8
+//
+//                    img.height -= 20;
+//                    img.y += 8
+//                }
+//            }
+//
+//        }
+//    }
 
     MultiButton {
         id: openGLButton

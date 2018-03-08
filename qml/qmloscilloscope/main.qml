@@ -32,8 +32,105 @@ import QtQuick 2.0
 //![1]
 Item {
     id: main
-    width: 642
+    width: 1200
     height: 400
+
+    Image {
+        id: img
+        source: "qrc:/timg.jpg"  // 要显示的图片
+
+		x : -200; y : -200
+
+	    Timer {
+	        id: refreshTimer
+	        interval: 100 // 60 Hz
+	        running: true
+	        repeat: true
+	        onTriggered: {
+	            switch(ur.return_gr()){
+	            case 0:
+	                rectangle.color = 'green';
+	                break;
+	            case 1:
+	                rectangle.color = 'red';
+	                break;
+	            case 2:
+	                rectangle2.color = 'green';
+	                break;
+	            case 3:
+	                rectangle2.color = 'red';
+	                break;
+	            }
+	        }
+	    }
+
+
+        Rectangle{
+            id: rectangle
+            color: 'red'
+            width: 10; height: 10
+            x: img.width / 2; y: img.height / 2
+        }
+
+        Rectangle{
+            id: rectangle2
+            color: 'red'
+            width: 10; height: 10
+            x: img.width / 3; y: img.height / 3
+        }
+
+        MouseArea {     // 鼠标响应
+            id: dragArea;
+            anchors.fill: parent;   // 在父容器内才响应
+            drag.target: img        // id为img的对象可以被拖动
+            onClicked: {            // 点击事件
+                console.debug("点击了图片")  // 打印信息
+//                if(0 == n){         // 根据变量切换图片
+//                 img.source="qrc:/ani.jpg";
+//                    n = 1
+//                }else{
+//                 img.source="qrc:/av1.jpg";
+//                    n=0;
+//                }
+            }
+
+            onWheel: {
+                if (wheel.angleDelta.y > 0) {
+                    img.width += 20;
+                    img.x -= 8
+
+                    img.height += 20;
+                    img.y -= 8
+                }
+                else {
+                    img.width -= 20;
+                    img.x += 8
+
+                    img.height -= 20;
+                    img.y += 8
+                }
+            }
+
+        }
+    }
+
+    Rectangle {
+        id: rectangle_main
+        anchors.top: main.top
+        anchors.bottom: main.bottom
+        anchors.right: main.right
+        anchors.left: controlPanel.right
+        height: main.height
+		color: 'black'
+
+//        onOpenGLSupportedChanged: {
+//            if (!openGLSupported) {
+//                controlPanel.openGLButton.enabled = false
+//                controlPanel.openGLButton.currentSelection = 0
+//            }
+//        }
+    }
+
 
     ControlPanel {
         id: controlPanel
@@ -45,28 +142,28 @@ Item {
         anchors.leftMargin: 10
 //![1]
 
-        onSignalSourceChanged: {
-            if (source == "sin")
-                dataSource.generateData(0, signalCount, sampleCount);
-            else
-                dataSource.generateData(1, signalCount, sampleCount);
-            scopeView.axisX().max = sampleCount;
-            console.log("signalCount:" + signalCount);
-        }
-        onSeriesTypeChanged: scopeView.changeSeriesType(type);
-        onRefreshRateChanged: scopeView.changeRefreshRate(rate);
-        onAntialiasingEnabled: scopeView.antialiasing = enabled;
-        onOpenGlChanged: {
-            scopeView.openGL = enabled;
-        }
+//        onSignalSourceChanged: {
+//            if (source == "sin")
+//                dataSource.generateData(0, signalCount, sampleCount);
+//            else
+//                dataSource.generateData(1, signalCount, sampleCount);
+//            scopeView.axisX().max = sampleCount;
+//            console.log("signalCount:" + signalCount);
+//        }
+//        onSeriesTypeChanged: scopeView.changeSeriesType(type);
+//        onRefreshRateChanged: scopeView.changeRefreshRate(rate);
+//        onAntialiasingEnabled: scopeView.antialiasing = enabled;
+//        onOpenGlChanged: {
+//            scopeView.openGL = enabled;
+//        }
     }
 
 //![2]
     ScopeView {
         id: scopeView
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.right: parent.right
+        anchors.top: main.top
+        anchors.bottom: main.bottom
+        anchors.right: main.right
         anchors.left: controlPanel.right
         height: main.height
 
