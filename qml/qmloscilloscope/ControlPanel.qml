@@ -75,13 +75,6 @@ ColumnLayout {
         id: img
         source: "qrc:/timg.jpg"  // 要显示的图片
 
-//        RotationAnimation on rotation { // 旋转动画
-//                  loops: Animation.Infinite // 一直旋转
-//                  from: 0       // 从 0 - 360 度旋转
-//                  to: 360
-//                  duration: 3000        // 旋转一个周期需要三秒
-//              }
-
         Rectangle{
             id: rectangle
             color: 'red'

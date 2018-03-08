@@ -49,6 +49,8 @@ DataSource::DataSource(QQuickView *appViewer, QObject *parent) :
     qRegisterMetaType<QAbstractAxis*>();
 
     generateData(0, 5, 1024);
+	receiver_data = 0;
+	receiver_data2 = 0;
 }
 
 void DataSource::update(QAbstractSeries *series)
@@ -62,6 +64,9 @@ void DataSource::update(QAbstractSeries *series)
 		}
         //m_points[1023].setY((qreal) rand() / (qreal) RAND_MAX);
         m_points[1023].setY(receiver_data);
+		if(receiver_data != 0){
+			qDebug() << "receiver_data != 0";
+		}
     }
 }
 
@@ -76,6 +81,9 @@ void DataSource::update2(QAbstractSeries *series)
 		}
         //m_points[1023].setY((qreal) rand() / (qreal) RAND_MAX);
         m_points2[1023].setY(receiver_data2);
+		if(receiver_data2 != 0){
+			qDebug() << "receiver_data2 != 0";
+		}
 
     }
 }
