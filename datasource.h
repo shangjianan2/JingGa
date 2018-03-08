@@ -64,6 +64,7 @@ private:
 
     //lunge
     int receiver_data;
+    int receiver_data2;
 public slots:
     void anylisy(char *p_char);
 };

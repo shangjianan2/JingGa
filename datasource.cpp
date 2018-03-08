@@ -55,21 +55,6 @@ void DataSource::update(QAbstractSeries *series)
 {
     if (series) {
         QXYSeries *xySeries = static_cast<QXYSeries *>(series);
-        m_index++;
-        if (m_index > m_data.count() - 1)
-            m_index = 0;
-        qDebug() << xySeries->count();
-
-        QVector<QPointF> points = m_data.at(m_index);
-        // Use replace instead of clear + append, it's optimized for performance
-        xySeries->replace(points);
-    }
-}
-
-void DataSource::update2(QAbstractSeries *series)
-{
-    if (series) {
-        QXYSeries *xySeries = static_cast<QXYSeries *>(series);
         xySeries->replace(m_points);
 
 		for(int i = 0; i < 1023; i++){
@@ -79,9 +64,28 @@ void DataSource::update2(QAbstractSeries *series)
         m_points[1023].setY(receiver_data);
     }
 }
+
+void DataSource::update2(QAbstractSeries *series)
+{
+    if (series) {
+        QXYSeries *xySeries = static_cast<QXYSeries *>(series);
+        xySeries->replace(m_points2);
+
+		for(int i = 0; i < 1023; i++){
+			m_points2[i].setY(m_points2[i + 1].ry())	;
+		}
+        //m_points[1023].setY((qreal) rand() / (qreal) RAND_MAX);
+        m_points2[1023].setY(receiver_data2);
+
+    }
+}
 void DataSource::anylisy(char *p_char)
 {
-    receiver_data = (int)(*p_char);
+	if(p_char[0] == 0){
+		receiver_data = p_char[1]	;
+	}else{
+		receiver_data2 = p_char[1]	;
+	}
 }
 
 void DataSource::generateData(int type, int rowCount, int colCount)
@@ -122,4 +126,6 @@ void DataSource::generateData(int type, int rowCount, int colCount)
     }
 
     m_points = m_data.at(1);
+    m_points2 = m_data.at(0);
+
 }
