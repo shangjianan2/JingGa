@@ -82,10 +82,10 @@ void DataSource::update2(QAbstractSeries *series)
 }
 void DataSource::anylisy(char *p_char)
 {
-	if(p_char[0] == 0){
-		receiver_data = p_char[1]	;
+    if(p_char[0] == '0'){
+        receiver_data = p_char[1] - 48	;
 	}else{
-		receiver_data2 = p_char[1]	;
+        receiver_data2 = p_char[1] - 48	;
 	}
 }
 

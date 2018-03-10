@@ -143,6 +143,24 @@ Item {
             placeholderText: qsTr("Send Data")
             font.pixelSize: 12
         }
+        TextField {
+            id: textInput2
+            x: 0
+            y: parent.height / 2 + 25
+            width: 300
+            height: 25
+            placeholderText: qsTr("IP")
+            font.pixelSize: 12
+        }
+        TextField {
+            id: textInput3
+            x: 0
+            y: parent.height / 2 + 50
+            width: 300
+            height: 25
+            placeholderText: qsTr("port")
+            font.pixelSize: 12
+        }
         Button{
             id:sendData
             x: textInput1.width
@@ -151,7 +169,7 @@ Item {
             text: "Send"
             onClicked: {
                 console.log("sendData is pressed")
-                ur.sendto("a","a","a")
+                ur.sendto(textInput1.text, textInput2.text, textInput3.text)
             }
         }
     }
