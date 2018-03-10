@@ -37,13 +37,13 @@ import QtQuick.Layouts 1.1
 Item {
     id: main
     width: 1200
-    height: 400
+    height: 800
 
     Image {
         id: img
         source: "qrc:/timg.jpg"  // 要显示的图片
 
-		x : -200; y : -200
+        x : -200; y : -10
 
 	    Timer {
 	        id: refreshTimer
