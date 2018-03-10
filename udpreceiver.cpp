@@ -43,23 +43,23 @@ void UdpReceiver::receive()
 //            green_red = false;
 //        }
         char *p_char = ba.data();
-//        qDebug() << p_char;
+        qDebug() << p_char;
 //        qDebug() << p_char[0];
         if(p_char[0] == '0'){
             if(p_char[1] > '2'){
                 green_red = 0;
-                qDebug() << "green_red = 0";
+//                qDebug() << "green_red = 0";
             }else{
                 green_red = 1;
-                qDebug() << "green_red = 1";
+//                qDebug() << "green_red = 1";
             }
         }else{
             if(p_char[1] > '2'){
                 green_red = 2;
-                qDebug() << "green_red = 2";
+//                qDebug() << "green_red = 2";
             }else{
                 green_red = 3;
-                qDebug() << "green_red = 3";
+//                qDebug() << "green_red = 3";
             }
         }
         emit senddate(p_char);
@@ -74,8 +74,11 @@ int UdpReceiver::return_gr()
 void UdpReceiver::sendto(QString sendmessage, QString address, QString port)
 {
     QUdpSocket qus_tt;
-    qDebug() << sendmessage + " " + address + " " + port;
-    //qus_tt.writeDatagram("sendmessage", QHostAddress(address), port);
-    //qus_tt.wri
+    const QByteArray constByteArray = sendmessage.toLatin1();
+    const char* constData = (const char*)constByteArray.constData();
+    qDebug() << constData;
+    qus_tt.writeDatagram(&constData[0], 2, QHostAddress(address), 2333);
+    //qus_tt.writeDatagram(&constData[1], QHostAddress(address), 2333);
+    //const char* constData = (const char *)data.constData();
     //qus_tt.wri
 }
