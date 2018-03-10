@@ -29,6 +29,10 @@
 
 import QtQuick 2.0
 
+import QtQuick 2.1
+import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
+
 //![1]
 Item {
     id: main
@@ -129,6 +133,27 @@ Item {
 //                controlPanel.openGLButton.currentSelection = 0
 //            }
 //        }
+
+        TextField {
+            id: textInput1
+            x: 0
+            y: parent.height / 2
+            width: 300
+            height: 25
+            placeholderText: qsTr("Send Data")
+            font.pixelSize: 12
+        }
+        Button{
+            id:sendData
+            x: textInput1.width
+            y: parent.height / 2
+            width: 60
+            text: "Send"
+            onClicked: {
+                console.log("sendData is pressed")
+                ur.sendto("a","a","a")
+            }
+        }
     }
 
 
@@ -162,10 +187,11 @@ Item {
     ScopeView {
         id: scopeView
         anchors.top: main.top
-        anchors.bottom: main.bottom
+        //anchors.bottom: main.bottom / 2
         anchors.right: main.right
         anchors.left: controlPanel.right
-        height: main.height
+        height: main.height / 2
+        //width: main.width / 2
 
         onOpenGLSupportedChanged: {
             if (!openGLSupported) {

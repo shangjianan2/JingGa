@@ -15,6 +15,7 @@ public:
 public slots:
     void receive();
     int return_gr();
+    void sendto(QString sendmessage, QString address, QString port);//发送数据;
 
 private:
     QUdpSocket *uSocket;
@@ -22,9 +23,11 @@ private:
     //from lunge
 public:
     int green_red;
+    //Q_INVOKABLE void sendto(QString sendmessage, QString address, QString port);//发送数据;
 
 signals:
     void senddate(char *data);
+
 };
 
 #endif // UDPRECEIVER_H

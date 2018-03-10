@@ -54,3 +54,8 @@ int UdpReceiver::return_gr()
 {
     return green_red;
 }
+
+void UdpReceiver::sendto(QString sendmessage, QString address, QString port)
+{
+    qDebug() << sendmessage + " " + address + " " + port;
+}
