@@ -77,7 +77,7 @@ void UdpReceiver::sendto(QString sendmessage, QString address, QString port)
     const QByteArray constByteArray = sendmessage.toLatin1();
     const char* constData = (const char*)constByteArray.constData();
     qDebug() << constData;
-    qus_tt.writeDatagram(&constData[0], 2, QHostAddress(address), port.toUInt());
+    qus_tt.writeDatagram(&constData[0], constByteArray.length(), QHostAddress(address), port.toUInt());
     //qus_tt.writeDatagram(&constData[1], QHostAddress(address), 2333);
     //const char* constData = (const char *)data.constData();
     //qus_tt.wri
