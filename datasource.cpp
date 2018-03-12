@@ -132,7 +132,7 @@ void DataSource::generateData(int type, int rowCount, int colCount)
 //                break;
 //            }
 //            points.append(QPointF(j, 0));
-            if(rowCount <= 1){
+            if(i <= 1){
                 points.append(QPointF(j, 0));
             }else{
                 points.append(QPointF(j, 2));
