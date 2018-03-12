@@ -44,10 +44,11 @@ void UdpReceiver::receive()
 //            green_red = false;
 //        }
         char *p_char = ba.data();
+        QString p_string = &p_char[1];
         qDebug() << p_char;
 //        qDebug() << p_char[0];
         if(p_char[0] == '0'){
-            if(p_char[1] > '2'){
+            if(p_string.toInt() > 50){
                 green_red = 0;
 //                qDebug() << "green_red = 0";
             }else{

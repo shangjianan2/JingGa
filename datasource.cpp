@@ -92,9 +92,13 @@ void DataSource::update_red(QAbstractSeries *series)
 void DataSource::anylisy(char *p_char)
 {
     if(p_char[0] == '0'){
-        receiver_data = p_char[1] - 48	;
+        //receiver_data = p_char[1] - 48	;
+        QString p_string = &p_char[1];
+        receiver_data = p_string.toInt();
 	}else{
-        receiver_data2 = p_char[1] - 48	;
+        //receiver_data2 = p_char[1] - 48	;
+        QString p_string = &p_char[1];
+        receiver_data2 = p_string.toInt();
 	}
 }
 
@@ -135,7 +139,7 @@ void DataSource::generateData(int type, int rowCount, int colCount)
             if(i <= 1){
                 points.append(QPointF(j, 0));
             }else{
-                points.append(QPointF(j, 2));
+                points.append(QPointF(j, 50));
             }
         }
         m_data.append(points);
