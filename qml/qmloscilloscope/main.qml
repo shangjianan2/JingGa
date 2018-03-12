@@ -43,7 +43,7 @@ Item {
         id: img
         source: "qrc:/timg.jpg"  // 要显示的图片
 
-        x : -200; y : -10
+        x : 0; y : 0
 
 	    Timer {
 	        id: refreshTimer
@@ -53,16 +53,16 @@ Item {
 	        onTriggered: {
 	            switch(ur.return_gr()){
 	            case 0:
-	                rectangle.color = 'green';
+                    rectangle.color = 'red';
 	                break;
 	            case 1:
-	                rectangle.color = 'red';
+                    rectangle.color = 'blue';
 	                break;
 	            case 2:
-	                rectangle2.color = 'green';
+                    rectangle2.color = 'red';
 	                break;
 	            case 3:
-	                rectangle2.color = 'red';
+                    rectangle2.color = 'yellow';
 	                break;
 	            }
 	        }
@@ -71,16 +71,31 @@ Item {
 
         Rectangle{
             id: rectangle
-            color: 'red'
+            color: 'blue'
             width: 10; height: 10
             x: img.width / 2; y: img.height / 2
+        }
+        Text {
+            id: rectangle_text
+            text: qsTr("center point")
+            color: 'blue'
+            x: rectangle.x + rectangle.width; y: rectangle.y + rectangle.height
+            font.pointSize: 20
         }
 
         Rectangle{
             id: rectangle2
-            color: 'red'
+            color: 'yellow'
             width: 10; height: 10
             x: img.width / 3; y: img.height / 3
+        }
+
+        Text {
+            id: rectangle2_text
+            text: qsTr("left point")
+            color: 'yellow'
+            x: rectangle2.x + rectangle2.width; y: rectangle2.y + rectangle2.height
+            font.pointSize: 20
         }
 
         MouseArea {     // 鼠标响应
@@ -129,8 +144,8 @@ Item {
 
         TextField {
             id: textInput1
-            x: 0
-            y: parent.height / 2
+            x: rectangle_main.width / 2 - textInput1.width / 2
+            y: parent.height * 5 / 6 - 25
             width: 300
             height: 25
             placeholderText: qsTr("Send Data")
@@ -138,18 +153,18 @@ Item {
         }
         TextField {
             id: textInput2
-            x: 0
-            y: parent.height / 2 + 25
+            x: textInput1.x
+            y: textInput1.y + 25
             width: 300
             height: 25
-            placeholderText: qsTr("desIP")
+            placeholderText: qsTr("IP")
             font.pixelSize: 12
         }
         TextField {
             id: textInput3
-            x: 0
-            y: parent.height / 2 + 50
-            width: 300
+            x: textInput2.width + textInput2.x
+            y: textInput2.y
+            width: sendData.width
             height: 25
             placeholderText: qsTr("port")
             font.pixelSize: 12
@@ -176,8 +191,8 @@ Item {
 //        }
         Button{
             id:sendData
-            x: textInput1.width
-            y: parent.height / 2
+            x: textInput1.width + textInput1.x
+            y: textInput1.y
             width: 60
             text: "Send"
             onClicked: {
@@ -191,7 +206,7 @@ Item {
 
     ControlPanel {
         id: controlPanel
-        width: 326
+        width: parent.width * 2 / 3
         anchors.top: parent.top
         anchors.topMargin: 10
         anchors.bottom: parent.bottom
@@ -206,7 +221,7 @@ Item {
         //anchors.bottom: main.bottom / 2
         anchors.right: main.right
         anchors.left: controlPanel.right
-        height: main.height / 2
+        height: main.height * 2 / 3
         //width: main.width / 2
 
         onOpenGLSupportedChanged: {

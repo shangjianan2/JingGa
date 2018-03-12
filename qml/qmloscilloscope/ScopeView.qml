@@ -87,6 +87,7 @@ ChartView {
         axisX: axisX
         axisY: axisY1
         useOpenGL: chartView.openGL
+        color: 'blue'
     }
     LineSeries {
         id: lineSeries2
@@ -94,6 +95,7 @@ ChartView {
         axisX: axisX
         axisYRight: axisY1
         useOpenGL: chartView.openGL
+        color: 'yellow'
     }
 
 
