@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QUdpSocket>
+#include <QNetworkDatagram>
 
 class UdpReceiver : public QObject
 {
@@ -16,6 +17,7 @@ public slots:
     void receive();
     int return_gr();
     void sendto(QString sendmessage, QString address, QString port);//发送数据;
+    void sendto2(QString sendmessage, QString address, QString port, QString my_address, QString my_port);//发送数据;
 
 private:
     QUdpSocket *uSocket;

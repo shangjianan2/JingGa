@@ -1,4 +1,5 @@
 QT += charts qml quick
+QT += network
 
 HEADERS += \
     datasource.h \

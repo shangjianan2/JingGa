@@ -125,14 +125,7 @@ Item {
         anchors.right: main.right
         anchors.left: controlPanel.right
         height: main.height
-		color: 'black'
-
-//        onOpenGLSupportedChanged: {
-//            if (!openGLSupported) {
-//                controlPanel.openGLButton.enabled = false
-//                controlPanel.openGLButton.currentSelection = 0
-//            }
-//        }
+        color: 'black'
 
         TextField {
             id: textInput1
@@ -149,7 +142,7 @@ Item {
             y: parent.height / 2 + 25
             width: 300
             height: 25
-            placeholderText: qsTr("IP")
+            placeholderText: qsTr("desIP")
             font.pixelSize: 12
         }
         TextField {
@@ -161,6 +154,26 @@ Item {
             placeholderText: qsTr("port")
             font.pixelSize: 12
         }
+
+        TextField {
+            id: textInput4
+            x: 0
+            y: parent.height / 2 + 75
+            width: 300
+            height: 25
+            placeholderText: qsTr("my IP")
+            font.pixelSize: 12
+        }
+
+        TextField {
+            id: textInput5
+            x: 0
+            y: parent.height / 2 + 100
+            width: 300
+            height: 25
+            placeholderText: qsTr("my port")
+            font.pixelSize: 12
+        }
         Button{
             id:sendData
             x: textInput1.width
@@ -169,7 +182,7 @@ Item {
             text: "Send"
             onClicked: {
                 console.log("sendData is pressed")
-                ur.sendto(textInput1.text, textInput2.text, textInput3.text)
+                ur.sendto(textInput1.text, textInput2.text, textInput3.text, textInput4.text, textInput5.text)
             }
         }
     }
@@ -183,22 +196,6 @@ Item {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.leftMargin: 10
-//![1]
-
-//        onSignalSourceChanged: {
-//            if (source == "sin")
-//                dataSource.generateData(0, signalCount, sampleCount);
-//            else
-//                dataSource.generateData(1, signalCount, sampleCount);
-//            scopeView.axisX().max = sampleCount;
-//            console.log("signalCount:" + signalCount);
-//        }
-//        onSeriesTypeChanged: scopeView.changeSeriesType(type);
-//        onRefreshRateChanged: scopeView.changeRefreshRate(rate);
-//        onAntialiasingEnabled: scopeView.antialiasing = enabled;
-//        onOpenGlChanged: {
-//            scopeView.openGL = enabled;
-//        }
     }
 
 //![2]

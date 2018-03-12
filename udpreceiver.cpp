@@ -11,6 +11,7 @@
 #include <QUdpSocket>
 
 #include <iostream>
+#include <QNetworkDatagram>
 
 
 const quint16 PORT = 2333;
@@ -81,4 +82,21 @@ void UdpReceiver::sendto(QString sendmessage, QString address, QString port)
     //qus_tt.writeDatagram(&constData[1], QHostAddress(address), 2333);
     //const char* constData = (const char *)data.constData();
     //qus_tt.wri
+}
+
+void UdpReceiver::sendto2(QString sendmessage, QString address, QString port, QString my_address, QString my_port)
+{
+//    QUdpSocket qus_tt;
+//    const QByteArray constByteArray = sendmessage.toLatin1();
+//    const char* constData = (const char*)constByteArray.constData();
+//    qDebug() << constData;
+//    qus_tt.writeDatagram(&constData[0], constByteArray.length(), QHostAddress(address), port.toUInt());
+
+    QUdpSocket qus_tt;
+    const QByteArray constByteArray = sendmessage.toLatin1();
+    QNetworkDatagram network_tt;// = QNetworkDatagram::QNetworkDatagram(constByteArray, QHostAddress(address), port.toUInt());
+    network_tt.setData(constByteArray);
+    network_tt.setDestination(QHostAddress(address), port.toUInt());
+    network_tt.setSender(QHostAddress(my_address), my_port.toUInt());
+    qus_tt.writeDatagram(network_tt);
 }
