@@ -155,25 +155,25 @@ Item {
             font.pixelSize: 12
         }
 
-        TextField {
-            id: textInput4
-            x: 0
-            y: parent.height / 2 + 75
-            width: 300
-            height: 25
-            placeholderText: qsTr("my IP")
-            font.pixelSize: 12
-        }
+//        TextField {
+//            id: textInput4
+//            x: 0
+//            y: parent.height / 2 + 75
+//            width: 300
+//            height: 25
+//            placeholderText: qsTr("my IP")
+//            font.pixelSize: 12
+//        }
 
-        TextField {
-            id: textInput5
-            x: 0
-            y: parent.height / 2 + 100
-            width: 300
-            height: 25
-            placeholderText: qsTr("my port")
-            font.pixelSize: 12
-        }
+//        TextField {
+//            id: textInput5
+//            x: 0
+//            y: parent.height / 2 + 100
+//            width: 300
+//            height: 25
+//            placeholderText: qsTr("my port")
+//            font.pixelSize: 12
+//        }
         Button{
             id:sendData
             x: textInput1.width

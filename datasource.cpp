@@ -80,6 +80,15 @@ void DataSource::update2(QAbstractSeries *series)
         m_points2[1023].setY(receiver_data2);
     }
 }
+
+void DataSource::update_red(QAbstractSeries *series)
+{
+    if (series) {
+        QXYSeries *xySeries = static_cast<QXYSeries *>(series);
+        xySeries->replace(m_points_red);
+    }
+}
+
 void DataSource::anylisy(char *p_char)
 {
     if(p_char[0] == '0'){
@@ -106,27 +115,34 @@ void DataSource::generateData(int type, int rowCount, int colCount)
         for (int j(0); j < colCount; j++) {
             qreal x(0);
             qreal y(0);
-            switch (type) {
-            case 0:
-                // data with sin + random component
-                y = qSin(3.14159265358979 / 50 * j) + 0.5 + (qreal) rand() / (qreal) RAND_MAX;
-                x = j;
-                break;
-            case 1:
-                // linear data
-                x = j;
-                y = (qreal) i / 10;
-                break;
-            default:
-                // unknown, do nothing
-                break;
+//            switch (type) {
+//            case 0:
+//                // data with sin + random component
+//                //y = qSin(3.14159265358979 / 50 * j) + 0.5 + (qreal) rand() / (qreal) RAND_MAX;
+//                y = 0;
+//                x = j;
+//                break;
+//            case 1:
+//                // linear data
+//                x = j;
+//                y = (qreal) i / 10;
+//                break;
+//            default:
+//                // unknown, do nothing
+//                break;
+//            }
+//            points.append(QPointF(j, 0));
+            if(rowCount <= 1){
+                points.append(QPointF(j, 0));
+            }else{
+                points.append(QPointF(j, 2));
             }
-            points.append(QPointF(x, y));
         }
         m_data.append(points);
     }
 
     m_points = m_data.at(1);
     m_points2 = m_data.at(0);
+    m_points_red = m_data.at(2);
 
 }

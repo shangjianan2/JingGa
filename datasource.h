@@ -52,12 +52,14 @@ public slots:
     void generateData(int type, int rowCount, int colCount);
     void update(QAbstractSeries *series);
     void update2(QAbstractSeries *series);
+    void update_red(QAbstractSeries *series);
 
 private:
     QQuickView *m_appViewer;
     QList<QVector<QPointF> > m_data;
     QVector<QPointF> m_points;
     QVector<QPointF> m_points2;
+    QVector<QPointF> m_points_red;
     QVector<QPointF> *p_m_points;
     int m_index_tt;
     int m_index;

@@ -50,6 +50,8 @@ ChartView {
         }
     }
 
+
+
     ValueAxis {
         id: axisY1
         min: -2
@@ -71,30 +73,40 @@ ChartView {
     }
 
     LineSeries {
+        id: lineSeries_red
+        name: "signal red"
+        axisX: axisX
+        axisYRight: axisY1
+        useOpenGL: chartView.openGL
+        color: 'red'
+    }
+
+    LineSeries {
         id: lineSeries1
-        name: "signal 1"
+        name: "center point"
         axisX: axisX
         axisY: axisY1
         useOpenGL: chartView.openGL
     }
     LineSeries {
         id: lineSeries2
-        name: "signal 2"
+        name: "left point"
         axisX: axisX
-        axisYRight: axisY2
+        axisYRight: axisY1
         useOpenGL: chartView.openGL
     }
-//![1]
 
-    //![2]
+
+
     Timer {
         id: refreshTimer
         interval: 1 / 60 * 1000 // 60 Hz
         running: true
         repeat: true
         onTriggered: {
-            dataSource.update(chartView.series(0));
-            dataSource.update2(chartView.series(1));
+            dataSource.update(chartView.series(1));
+            dataSource.update2(chartView.series(2));
+            dataSource.update_red(chartView.series(0))
         }
     }
     //![2]
