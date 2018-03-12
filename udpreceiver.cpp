@@ -98,5 +98,17 @@ void UdpReceiver::sendto2(QString sendmessage, QString address, QString port, QS
     network_tt.setData(constByteArray);
     network_tt.setDestination(QHostAddress(address), port.toUInt());
     network_tt.setSender(QHostAddress(my_address), my_port.toUInt());
+    qDebug() << my_port;
     qus_tt.writeDatagram(network_tt);
+}
+
+void UdpReceiver::sendto3(QString sendmessage, QString address, QString port)
+{
+    const QByteArray constByteArray = sendmessage.toLatin1();
+    const char* constData = (const char*)constByteArray.constData();
+    qDebug() << constData;
+    uSocket->writeDatagram(&constData[0], constByteArray.length(), QHostAddress(address), port.toUInt());
+    //qus_tt.writeDatagram(&constData[1], QHostAddress(address), 2333);
+    //const char* constData = (const char *)data.constData();
+    //qus_tt.wri
 }

@@ -182,7 +182,8 @@ Item {
             text: "Send"
             onClicked: {
                 console.log("sendData is pressed")
-                ur.sendto(textInput1.text, textInput2.text, textInput3.text, textInput4.text, textInput5.text)
+                //ur.sendto2(textInput1.text, textInput2.text, textInput3.text, textInput4.text, textInput5.text)
+                ur.sendto3(textInput1.text, textInput2.text, textInput3.text)
             }
         }
     }
