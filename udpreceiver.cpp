@@ -21,7 +21,7 @@ UdpReceiver::UdpReceiver(QObject *p) :
 {
     uSocket = new QUdpSocket;
     //uSocket->bind(QHostAddress("127.0.0.1"), PORT);
-    uSocket->bind(QHostAddress("192.168.170.130"), PORT);
+    uSocket->bind(QHostAddress("192.168.43.181"), PORT);
     connect(uSocket, SIGNAL(readyRead()), this, SLOT(receive()));
 }
 
@@ -56,7 +56,7 @@ void UdpReceiver::receive()
 //                qDebug() << "green_red = 1";
             }
         }else{
-            if(p_char[1] > '2'){
+            if(p_string.toInt() > 50){
                 green_red = 2;
 //                qDebug() << "green_red = 2";
             }else{
