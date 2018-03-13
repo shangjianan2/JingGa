@@ -43,7 +43,7 @@ Item {
         id: img
         source: "qrc:/timg.jpg"  // 要显示的图片
 
-        x : 0; y : 0
+        x : -1000; y : -1000
 
 	    Timer {
 	        id: refreshTimer
@@ -72,7 +72,7 @@ Item {
         Rectangle{
             id: rectangle
             color: 'blue'
-            width: 10; height: 10
+            width: 30; height: 30
             x: img.width / 2; y: img.height / 2
         }
         Text {
@@ -81,12 +81,13 @@ Item {
             color: 'blue'
             x: rectangle.x + rectangle.width; y: rectangle.y + rectangle.height
             font.pointSize: 20
+            font.family: "Arial"
         }
 
         Rectangle{
             id: rectangle2
             color: 'yellow'
-            width: 10; height: 10
+            width: 30; height: 30
             x: img.width / 3; y: img.height / 3
         }
 
@@ -96,6 +97,7 @@ Item {
             color: 'yellow'
             x: rectangle2.x + rectangle2.width; y: rectangle2.y + rectangle2.height
             font.pointSize: 20
+            font.family: "Arial"
         }
 
         MouseArea {     // 鼠标响应
