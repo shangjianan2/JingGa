@@ -77,7 +77,7 @@ Item {
         }
         Text {
             id: rectangle_text
-            text: qsTr("center point")
+            text: qsTr("point 1")
             color: 'blue'
             x: rectangle.x + rectangle.width; y: rectangle.y + rectangle.height
             font.pointSize: 20
@@ -93,7 +93,7 @@ Item {
 
         Text {
             id: rectangle2_text
-            text: qsTr("left point")
+            text: qsTr("point 2")
             color: 'yellow'
             x: rectangle2.x + rectangle2.width; y: rectangle2.y + rectangle2.height
             font.pointSize: 20

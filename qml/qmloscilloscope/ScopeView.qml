@@ -83,7 +83,7 @@ ChartView {
 
     LineSeries {
         id: lineSeries1
-        name: "center point"
+        name: "point 1"
         axisX: axisX
         axisY: axisY1
         useOpenGL: chartView.openGL
@@ -91,7 +91,7 @@ ChartView {
     }
     LineSeries {
         id: lineSeries2
-        name: "left point"
+        name: "point 2"
         axisX: axisX
         axisYRight: axisY1
         useOpenGL: chartView.openGL
